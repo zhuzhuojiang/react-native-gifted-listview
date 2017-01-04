@@ -54,9 +54,14 @@ var GiftedListView = React.createClass({
       paginationAllLoadedView: null,
       paginationWaitingView: null,
       emptyView: null,
+      emptyText:'当前没有数据',
+      loadMoreText:'加载更多',
       renderSeparator: null,
       rowHasChanged:null,
       distinctRows:null,
+
+      spinnerSize: 'small',
+      spinnerColor: 'gray',
     };
   },
 
@@ -86,6 +91,11 @@ var GiftedListView = React.createClass({
 
     rowHasChanged:React.PropTypes.func,
     distinctRows:React.PropTypes.func,
+
+    spinnerSize: React.PropTypes.string,
+    spinnerColor: React.PropTypes.string,
+    emptyText: React.PropTypes.string,
+    loadMoreText: React.PropTypes.string,
   },
 
   _setPage(page) { this._page = page; },
@@ -101,7 +111,11 @@ var GiftedListView = React.createClass({
 
     return (
       <View style={[this.defaultStyles.paginationView, this.props.customStyles.paginationView]}>
-        <ActivityIndicator />
+        <ActivityIndicator
+            animating={true}
+            size={this.props.spinnerSize}
+            color={this.props.spinnerColor}
+        />
       </View>
     );
   },
@@ -130,7 +144,7 @@ var GiftedListView = React.createClass({
         style={[this.defaultStyles.paginationView, this.props.customStyles.paginationView]}
       >
         <Text style={[this.defaultStyles.actionsLabel, this.props.customStyles.actionsLabel]}>
-          Load more
+          {this.props.loadMoreText}
         </Text>
       </TouchableHighlight>
     );
@@ -149,7 +163,7 @@ var GiftedListView = React.createClass({
     return (
       <View style={[this.defaultStyles.defaultView, this.props.customStyles.defaultView]}>
         <Text style={[this.defaultStyles.defaultViewTitle, this.props.customStyles.defaultViewTitle]}>
-          Sorry, there is no content to display
+          {this.props.emptyText}
         </Text>
 
         <TouchableHighlight
