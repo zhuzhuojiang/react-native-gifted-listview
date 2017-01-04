@@ -1,3 +1,5 @@
+forked from FaridSafi/react-native-gifted-listview . Changed the Empty Text and Load More text to Chinese and ADDED the loadMoreText and emptyText as pros
+
 # Gifted ListView
 
 A ListView with pull-to-refresh, infinite scrolling and more for Android and iOS React-Native apps
