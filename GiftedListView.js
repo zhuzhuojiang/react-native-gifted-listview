@@ -1,6 +1,8 @@
 'use strict'
 
 var React = require('react');
+React.PropTypes=require('prop-types');
+React.createClass=require('create-react-class');
 
 var {
   ListView,
